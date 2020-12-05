@@ -12,7 +12,9 @@
         android:id="@+id/tv_welcome_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenidos a TODO app, la mejor app de tareas"/>
+        android:text="Bienvenidos a TODO app, la mejor app de tareas de todo el mundo"
+        tools:background="@color/purple_200"
+        android:padding="40dp"/>
 
     <EditText
         android:id="@+id/et_email"
@@ -33,5 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Iniciar sesión" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarme" />
 
 </LinearLayout>
