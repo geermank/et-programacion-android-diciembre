@@ -12,34 +12,41 @@
         android:id="@+id/tv_welcome_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenidos a TODO app, la mejor app de tareas de todo el mundo"
+        android:text="Bienvenidos a TODO app"
         tools:background="@color/purple_200"
-        android:padding="40dp"/>
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:layout_margin="16dp"/>
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:layout_margin="16dp"/>
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar sesión" />
+        android:text="Iniciar sesión"
+        android:layout_margin="16dp"/>
 
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrarme" />
+        android:text="Registrarme"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>
