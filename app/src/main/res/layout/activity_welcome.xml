@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".WelcomeActivity">
+
+    <!--
+        below -> id -> debajo de
+        above -> id -> debajo de
+        layout_alignParentBottom -> true or false -> respecto del padre
+        layout_centerHorizontal -> true or false -> respecto del padre, centra horizontal
+        layout_centerVertical
+        layout_centerInParent
+    -->
 
     <TextView
         android:id="@+id/tv_welcome_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textSize="24sp"
         android:textColor="@color/purple_200"
         android:gravity="center"
-        android:padding="16dp"/>
+        android:padding="16dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tv_tyc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Al continuar aceptas los tyc"
+        android:layout_above="@id/buttons_container"/>
 
     <LinearLayout
+        android:id="@+id/buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="4"
+        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/btn_login"
@@ -39,4 +57,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
