@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.geermank.tododic.R;
@@ -22,6 +23,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
     private List<Task> tasks;
 
     private OnTaskClickListener clickListener;
+    private ListItemClickListener<Task> itemClickListener;
 
     public TasksAdapter(List<Task> tasks) {
         this.tasks = tasks;
@@ -29,6 +31,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
 
     public void setOnTaskClickListener(OnTaskClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    public void setOnItemClickListener(ListItemClickListener<Task> itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
@@ -64,11 +70,22 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             tvTitle.setText(task.getTitle());
             tvAssignedTo.setText(task.getAssignedTo());
 
+            if (task.isFinished()) {
+                int color = ContextCompat.getColor(itemView.getContext(), R.color.teal_200);
+                tvAssignedTo.setTextColor(color);
+            } else {
+                int color = ContextCompat.getColor(itemView.getContext(), R.color.black);
+                tvAssignedTo.setTextColor(color);
+            }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (clickListener != null) {
                         clickListener.onTaskClick(task);
+                    }
+                    if (itemClickListener != null) {
+                        itemClickListener.onItemClick(task);
                     }
                 }
             });

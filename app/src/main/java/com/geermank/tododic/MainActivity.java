@@ -9,13 +9,14 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.geermank.tododic.adapters.ListItemClickListener;
 import com.geermank.tododic.adapters.TasksAdapter;
 import com.geermank.tododic.models.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTaskClickListener {
+public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTaskClickListener, ListItemClickListener<Task> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +32,13 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
         tvWelcomeMessage.setText(welcomeMessage);
 
 
-
-
         RecyclerView rvTasks = findViewById(R.id.rv_tasks);
         rvTasks.setLayoutManager(new LinearLayoutManager(this));
 
         List<Task> tasks = createTaskList();
         TasksAdapter adapter = new TasksAdapter(tasks);
         adapter.setOnTaskClickListener(this);
+        adapter.setOnItemClickListener(this);
 
         rvTasks.setAdapter(adapter);
     }
@@ -49,9 +49,23 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
         Task t1 = new Task("Pasear al perro", "German", false);
         Task t2 = new Task("Estudiar", "Germán", false);
         Task t3 = new Task("Visitar a la abuela", "Mirta", false);
+        Task t4 = new Task("Tarea 4", "Juan", true);
 
         tasks.add(t1);
         tasks.add(t2);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t3);
+        tasks.add(t4);
+        tasks.add(t3);
+        tasks.add(t3);
         tasks.add(t3);
 
         return tasks;
@@ -59,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
 
     @Override
     public void onTaskClick(Task task) {
-        Toast.makeText(this, task.getTitle(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, task.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(Task item) {
+        Toast.makeText(this, item.getAssignedTo(), Toast.LENGTH_SHORT).show();
     }
 }
