@@ -15,10 +15,20 @@ import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHolder> {
 
+    public interface OnTaskClickListener {
+        void onTaskClick(Task task);
+    }
+
     private List<Task> tasks;
+
+    private OnTaskClickListener clickListener;
 
     public TasksAdapter(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public void setOnTaskClickListener(OnTaskClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -53,6 +63,15 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         public void bind(Task task) {
             tvTitle.setText(task.getTitle());
             tvAssignedTo.setText(task.getAssignedTo());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickListener != null) {
+                        clickListener.onTaskClick(task);
+                    }
+                }
+            });
         }
     }
 
