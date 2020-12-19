@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Todo Dic</string>
     <string name="welcome_message">Bienvenidos a todos</string>
+    <string name="my_tasks">Mis tareas</string>
 </resources>

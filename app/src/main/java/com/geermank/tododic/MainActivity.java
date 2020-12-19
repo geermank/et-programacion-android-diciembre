@@ -1,6 +1,7 @@
 package com.geermank.tododic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +23,18 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUpToolbar();
+        showWelcomeMessage();
+        setUpTasksList();
+    }
 
+    private void setUpToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.my_tasks);
+    }
+
+    private void showWelcomeMessage() {
         TextView tvWelcomeMessage = findViewById(R.id.tv_welcome_message);
 
         Intent intent = getIntent();
@@ -30,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
 
         String welcomeMessage = getString(R.string.welcome_message);
         tvWelcomeMessage.setText(welcomeMessage);
+    }
 
-
+    private void setUpTasksList() {
         RecyclerView rvTasks = findViewById(R.id.rv_tasks);
         rvTasks.setLayoutManager(new LinearLayoutManager(this));
 
@@ -49,23 +62,9 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
         Task t1 = new Task("Pasear al perro", "German", false);
         Task t2 = new Task("Estudiar", "Germán", false);
         Task t3 = new Task("Visitar a la abuela", "Mirta", false);
-        Task t4 = new Task("Tarea 4", "Juan", true);
 
         tasks.add(t1);
         tasks.add(t2);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t3);
-        tasks.add(t4);
-        tasks.add(t3);
-        tasks.add(t3);
         tasks.add(t3);
 
         return tasks;
