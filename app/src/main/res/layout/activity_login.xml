@@ -17,10 +17,10 @@
 
     <TextView
         android:id="@+id/tv_welcome_message"
+        style="@style/TextHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bienvenidos a TODO app"
-        tools:background="@color/purple_200"
         android:gravity="center"
         android:padding="16dp"
         android:layout_margin="16dp"/>

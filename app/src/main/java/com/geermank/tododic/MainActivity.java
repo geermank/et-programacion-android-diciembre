@@ -1,5 +1,6 @@
 package com.geermank.tododic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,5 +81,29 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
     @Override
     public void onItemClick(Task item) {
         Toast.makeText(this, item.getAssignedTo(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_create_new_task) {
+            startNewTaskActivity();
+        } else if (item.getItemId() == R.id.action_logout) {
+            logout();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void startNewTaskActivity() {
+        startActivity(new Intent(this, CreateTaskActivity.class));
+    }
+
+    private void logout() {
+        Toast.makeText(this, "Cerrando sesión..", Toast.LENGTH_SHORT).show();
     }
 }
