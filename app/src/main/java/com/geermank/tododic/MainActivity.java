@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
     }
 
     private void logout() {
-        Toast.makeText(this, "Cerrando sesión..", Toast.LENGTH_SHORT).show();
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.CREDENTIALS, MODE_PRIVATE);
+        if (sharedPreferences.contains(Constants.EMAIL_EXTRA) ||
+                sharedPreferences.contains(Constants.PASSWORD_EXTRA)) {
+            sharedPreferences.edit()
+                    .clear()
+                    .apply();
+        }
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }
