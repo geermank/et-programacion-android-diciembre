@@ -1,20 +1,18 @@
 package com.geermank.tododic.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tasks")
 public class Task {
 
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String title;
     private String assignedTo;
     private boolean finished;
 
     public Task(String title, String assignedTo, boolean finished) {
-        this.title = title;
-        this.assignedTo = assignedTo;
-        this.finished = finished;
-    }
-
-    public Task(long id, String title, String assignedTo, boolean finished) {
-        this.id = id;
         this.title = title;
         this.assignedTo = assignedTo;
         this.finished = finished;

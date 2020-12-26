@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.geermank.tododic.adapters.ListItemClickListener;
 import com.geermank.tododic.adapters.TasksAdapter;
+import com.geermank.tododic.database.LocalDatabase;
 import com.geermank.tododic.models.Task;
 
 import java.util.ArrayList;
@@ -61,17 +62,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.OnTa
     }
 
     private List<Task> createTaskList() {
-        List<Task> tasks = new ArrayList<>();
-
-        Task t1 = new Task("Pasear al perro", "German", false);
-        Task t2 = new Task("Estudiar", "Germán", false);
-        Task t3 = new Task("Visitar a la abuela", "Mirta", false);
-
-        tasks.add(t1);
-        tasks.add(t2);
-        tasks.add(t3);
-
-        return tasks;
+        return LocalDatabase.getInstance(this).getTaskDao().getAllTasks();
     }
 
     @Override
